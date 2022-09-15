@@ -50,6 +50,10 @@ module.exports = (env, argv) => {
             target: "es2015",
           },
         },
+        {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"],
+        },
       ],
     },
     plugins: [

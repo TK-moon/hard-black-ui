@@ -24,7 +24,7 @@
     "**/*.js",
     "*.js",
     "src/*.js",
-    "next-env.d.ts",
+    "env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "../graphql.config.js",
