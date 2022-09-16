@@ -16,7 +16,9 @@
   "dependencies": {
     "core-js": "^3.25.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.5",
+    "styled-reset": "^4.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
@@ -32,10 +34,12 @@
     "@storybook/testing-library": "^0.0.13",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.26",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "esbuild-loader": "^2.20.0",
     "eslint": "^8.23.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.4",
     "fork-ts-checker-webpack-plugin": "^7.2.13",
     "html-webpack-plugin": "^5.5.0",
