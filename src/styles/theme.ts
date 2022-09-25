@@ -33,6 +33,9 @@ const common_theme = {
   grey400: '#C8C8C8',
   grey500: '#8A8A8D',
   grey600: '#616163',
+
+  black: '#000000',
+  white: '#ffffff',
 };
 
 export const lightTheme: ThemeInterface = {
