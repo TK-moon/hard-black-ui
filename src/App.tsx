@@ -1,9 +1,9 @@
-import React from "react";
-import styles from "./App.module.css";
+import React from 'react';
+import styles from './App.module.css';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <div className='App'>
       <p className={styles.test}>App</p>
     </div>
   );
