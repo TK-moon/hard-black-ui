@@ -7,6 +7,13 @@ type VariantType = 'text' | 'default' | 'outlined';
 type SizeType = 'sm' | 'md' | 'lg';
 
 /**
+ * @TODO
+ * get~ColorByType 리팩토링
+ * 파라미터로 theme, color_type, lightmode brightness, darkmode brightness (400, 500 등) 받아
+ * theme[`${color}${brightness}`] 로 접근하여 return
+ */
+
+/**
  * 500 컬러 사용
  * @param theme
  * @param color_type
