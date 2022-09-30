@@ -133,6 +133,7 @@ const DefaultButton = styled(Container)`
   }
   &:disabled {
     background-color: ${({ theme, color }) => getDisabledColorByColorType(theme, color)};
+    color: ${({ theme }) => (theme.mode === 'light' ? theme.white : theme.grey500)};
     cursor: not-allowed;
   }
 `;
