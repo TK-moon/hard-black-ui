@@ -146,6 +146,25 @@ const OutlinedButton = styled(Container)`
     border: ${({ theme, color }) => `1px solid ${getHoverColorByColorType(theme, color)}`};
     color: ${({ theme, color }) => getHoverColorByColorType(theme, color)};
   }
+  &:disabled {
+    background-color: ${({ theme, color }) => getDisabledColorByColorType(theme, color)};
+    color: ${({ theme, color }) =>
+      theme.mode === 'light' ? getDisabledColorByColorType(theme, color) : theme.gray500};
+    cursor: not-allowed;
+  }
+`;
+
+const TextButton = styled(Container)`
+  background-color: transparent;
+  border-radius: 24px;
+  color: ${({ theme, color }) => getColorByColorType(theme, color)};
+  &:hover {
+    background-color: ${({ theme }) => (theme.mode === 'light' ? theme.gray100 : theme.gray900)};
+  }
+  &:disabled {
+    color: ${({ theme, color }) =>
+      theme.mode === 'light' ? getDisabledColorByColorType(theme, color) : theme.gray500};
+  }
 `;
 
 export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -169,7 +188,7 @@ const Button: React.FC<React.PropsWithChildren<Props>> = (props) => {
 
   switch (variant) {
     case 'text':
-      return null;
+      return <TextButton {...button_properties} />;
     case 'outlined':
       return <OutlinedButton {...button_properties} />;
     default:
