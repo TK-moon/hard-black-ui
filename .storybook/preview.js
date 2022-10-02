@@ -1,6 +1,6 @@
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@emotion/react';
 import { lightTheme, darkTheme } from '../src/styles/theme';
-import GlobalStyle from '../src/styles/globalStyle';
+import GlobalStyle from '../src/styles/GlobalStyle';
 import { themes } from '@storybook/theming';
 import { useDarkMode } from 'storybook-dark-mode';
 import React from 'react';

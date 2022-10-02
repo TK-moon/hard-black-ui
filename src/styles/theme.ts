@@ -1,5 +1,5 @@
 export interface ThemeInterface {
-  type: 'light' | 'dark';
+  mode: 'light' | 'dark';
 
   background: string;
 
@@ -9,6 +9,9 @@ export interface ThemeInterface {
   grey400: string;
   grey500: string;
   grey600: string;
+  grey700: string;
+  grey800: string;
+  grey900: string;
 
   blue100: string;
   blue200: string;
@@ -44,24 +47,28 @@ export interface ThemeInterface {
   purple400: string;
   purple500: string;
   purple600: string;
+
+  white: string;
+  black: string;
 }
 
 const common_theme = {
-  darkBlue: '#0C0B12',
-
   grey100: '#F2F2F6',
   grey200: '#EEEEEF',
   grey300: '#E5E5E9',
   grey400: '#C8C8C8',
   grey500: '#8A8A8D',
   grey600: '#616163',
+  grey700: '#454546',
+  grey800: '#29292A',
+  grey900: '#141414',
 
   black: '#000000',
   white: '#ffffff',
 };
 
 export const lightTheme: ThemeInterface = {
-  type: 'light',
+  mode: 'light',
 
   background: '#ffffff',
 
@@ -104,7 +111,7 @@ export const lightTheme: ThemeInterface = {
 };
 
 export const darkTheme: ThemeInterface = {
-  type: 'dark',
+  mode: 'dark',
 
   background: '#000000',
 
