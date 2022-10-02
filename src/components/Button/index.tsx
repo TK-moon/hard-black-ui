@@ -1,6 +1,7 @@
 import { ThemeInterface } from '@/styles/theme';
 import React, { ButtonHTMLAttributes } from 'react';
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 type ColorType = 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'default' | 'point';
 type VariantType = 'text' | 'default' | 'outlined';
@@ -45,7 +46,7 @@ const getColorByColorType = (theme: ThemeInterface, color_type: string) => {
  * @returns
  */
 const getHoverColorByColorType = (theme: ThemeInterface, color_type: string) => {
-  const is_light_mode = theme.type === 'light';
+  const is_light_mode = theme.mode === 'light';
 
   switch (color_type) {
     case 'primary':
@@ -66,7 +67,7 @@ const getHoverColorByColorType = (theme: ThemeInterface, color_type: string) => 
 };
 
 const getDisabledColorByColorType = (theme: ThemeInterface, color_type: string) => {
-  const is_light_mode = theme.type === 'light';
+  const is_light_mode = theme.mode === 'light';
 
   switch (color_type) {
     case 'primary':
@@ -149,7 +150,7 @@ const OutlinedButton = styled(Container)`
   &:disabled {
     background-color: ${({ theme, color }) => getDisabledColorByColorType(theme, color)};
     color: ${({ theme, color }) =>
-      theme.mode === 'light' ? getDisabledColorByColorType(theme, color) : theme.gray500};
+      theme.mode === 'light' ? getDisabledColorByColorType(theme, color) : theme.grey500};
     cursor: not-allowed;
   }
 `;
@@ -159,11 +160,11 @@ const TextButton = styled(Container)`
   border-radius: 24px;
   color: ${({ theme, color }) => getColorByColorType(theme, color)};
   &:hover {
-    background-color: ${({ theme }) => (theme.mode === 'light' ? theme.gray100 : theme.gray900)};
+    background-color: ${({ theme }) => (theme.mode === 'light' ? theme.grey100 : theme.grey900)};
   }
   &:disabled {
     color: ${({ theme, color }) =>
-      theme.mode === 'light' ? getDisabledColorByColorType(theme, color) : theme.gray500};
+      theme.mode === 'light' ? getDisabledColorByColorType(theme, color) : theme.grey500};
   }
 `;
 
