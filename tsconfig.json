@@ -15,10 +15,11 @@
     "isolatedModules": true,
     "jsx": "react",
     "baseUrl": ".",
+    "declaration": true,
     "paths": {
       "@/*": ["./src/*"]
     },
-    "incremental": true
+    "incremental": true,
   },
   "include": [
     "**/*.js",
@@ -29,5 +30,5 @@
     "**/*.tsx",
     ".eslintrc.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }
