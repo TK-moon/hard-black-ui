@@ -10,12 +10,13 @@
     "build:dev": "webpack --mode development --config ./webpack/webpack.config.js",
     "build:prod": "webpack --mode production --config ./webpack/webpack.config.js",
     "storybook": "start-storybook -p 6006",
-    "storybook:build": "build-storybook -s public",
+    "storybook:build": "build-storybook -s public -o storybook-dist",
     "test": "TZ=Asia/Seoul jest",
     "test:watch": "npm run test -- --watch",
     "electron:start": "wait-on http://localhost:6006 && electron .",
-    "electron:build": "electron-builder -c.extraMetadata.main=public/electron.js",
-    "build:win": "electron-builder --win portable --x64 -c.extraMetadata.main=public/electron.js"
+    "electron:build": "yarn storybook:build && electron-builder -c.extraMetadata.main=public/electron.js",
+    "electron:build:osx": "yarn storybook:build && electron-builder --mac -c.extraMetadata.main=public/electron.js",
+    "electron:build:win": "yarn storybook:build && electron-builder --win portable --x64 -c.extraMetadata.main=public/electron.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -77,7 +78,7 @@
     "webpack-merge": "^5.8.0"
   },
   "build": {
-    "productName": "HB-UI",
+    "productName": "HardBlackUI",
     "appId": "com.hard-black-ui.electron",
     "asar": true,
     "mac": {
@@ -86,7 +87,7 @@
       ]
     },
     "dmg": {
-      "title": "HB-UI"
+      "title": "HardBlackUI"
     },
     "win": {
       "target": [
@@ -100,12 +101,16 @@
       "perMachine": true,
       "language": 1042,
       "installerIcon": "build/icons/icon.ico",
-      "shortcutName": "HB-UI",
-      "artifactName": "HB-UI-${version}.${ext}",
+      "shortcutName": "HardBlackUI",
+      "artifactName": "HardBlackUI-${version}.${ext}",
       "uninstallDisplayName": "NB"
     },
     "directories": {
-      "output": "./dist/"
-    }
+      "output": "./electron-dist/"
+    },
+    "files": [
+      "public/electron.js",
+      "storybook-dist/**/*"
+    ]
   }
 }
