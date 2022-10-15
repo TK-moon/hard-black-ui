@@ -16,11 +16,7 @@ function createWindow() {
     ? 'http://localhost:6006'
     : `file://${path.join(__dirname, '../storybook-static/index.html')}`;
 
-  if (isDev) {
-    win.loadURL('http://localhost:6006');
-  } else {
-    win.loadURL(`file://${path.join(__dirname, '../storybook-static/index.html')}`);
-  }
+  win.loadURL(start_url);
 }
 
 app.whenReady().then(() => {

@@ -14,7 +14,8 @@
     "test": "TZ=Asia/Seoul jest",
     "test:watch": "npm run test -- --watch",
     "electron:start": "wait-on http://localhost:6006 && electron .",
-    "electron:build": "electron-builder -c.extraMetadata.main=public/electron.js"
+    "electron:build": "electron-builder -c.extraMetadata.main=public/electron.js",
+    "build:win": "electron-builder --win portable --x64 -c.extraMetadata.main=public/electron.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
