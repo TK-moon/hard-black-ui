@@ -1,7 +1,7 @@
 {
   "name": "hard-black-ui",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "public/electron.js",
   "author": "TK",
   "license": "MIT",
   "scripts": {
@@ -10,15 +10,19 @@
     "build:dev": "webpack --mode development --config ./webpack/webpack.config.js",
     "build:prod": "webpack --mode production --config ./webpack/webpack.config.js",
     "storybook": "start-storybook -p 6006",
-    "storybook:build": "build-storybook -s public",
+    "storybook:build": "build-storybook -s public -o storybook-dist",
     "test": "TZ=Asia/Seoul jest",
     "test:watch": "npm run test -- --watch",
-    "build-storybook": "build-storybook"
+    "electron:start": "wait-on http://localhost:6006 && electron .",
+    "electron:build": "yarn storybook:build && electron-builder -c.extraMetadata.main=public/electron.js",
+    "electron:build:osx": "yarn storybook:build && electron-builder --mac -c.extraMetadata.main=public/electron.js",
+    "electron:build:win": "yarn storybook:build && electron-builder --win portable --x64 -c.extraMetadata.main=public/electron.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "core-js": "^3.25.1",
+    "electron-is-dev": "^2.0.0",
     "emotion": "^11.0.0",
     "emotion-reset": "^3.0.1",
     "react": "^18.2.0",
@@ -45,11 +49,16 @@
     "@types/jest": "^29.1.1",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
-    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
+    "electron": "^21.0.1",
+    "electron-builder": "^23.6.0",
     "esbuild-loader": "^2.20.0",
     "eslint": "^8.23.1",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.4",
     "fork-ts-checker-webpack-plugin": "^7.2.13",
@@ -62,9 +71,46 @@
     "style-loader": "^3.3.1",
     "ts-jest": "^29.0.3",
     "typescript": "^4.8.3",
+    "wait-on": "^6.0.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.0",
     "webpack-merge": "^5.8.0"
+  },
+  "build": {
+    "productName": "HardBlackUI",
+    "appId": "com.hard-black-ui.electron",
+    "asar": true,
+    "mac": {
+      "target": [
+        "default"
+      ]
+    },
+    "dmg": {
+      "title": "HardBlackUI"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "perMachine": true,
+      "language": 1042,
+      "installerIcon": "build/icons/icon.ico",
+      "shortcutName": "HardBlackUI",
+      "artifactName": "HardBlackUI-${version}.${ext}",
+      "uninstallDisplayName": "NB"
+    },
+    "directories": {
+      "output": "./electron-dist/"
+    },
+    "files": [
+      "public/electron.js",
+      "storybook-dist/**/*"
+    ]
   }
 }
