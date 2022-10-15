@@ -13,13 +13,14 @@
     "storybook:build": "build-storybook -s public",
     "test": "TZ=Asia/Seoul jest",
     "test:watch": "npm run test -- --watch",
-    "build-storybook": "build-storybook",
-    "electron:start": "wait-on http://localhost:6006 && electron ."
+    "electron:start": "wait-on http://localhost:6006 && electron .",
+    "electron:build": "electron-builder -c.extraMetadata.main=public/electron.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "core-js": "^3.25.1",
+    "electron-is-dev": "^2.0.0",
     "emotion": "^11.0.0",
     "emotion-reset": "^3.0.1",
     "react": "^18.2.0",
@@ -50,6 +51,7 @@
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "electron": "^21.0.1",
+    "electron-builder": "^23.6.0",
     "esbuild-loader": "^2.20.0",
     "eslint": "^8.23.1",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -69,5 +71,37 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.0",
     "webpack-merge": "^5.8.0"
+  },
+  "build": {
+    "productName": "HB-UI",
+    "appId": "com.hard-black-ui.electron",
+    "asar": true,
+    "mac": {
+      "target": [
+        "default"
+      ]
+    },
+    "dmg": {
+      "title": "HB-UI"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "perMachine": true,
+      "language": 1042,
+      "installerIcon": "build/icons/icon.ico",
+      "shortcutName": "HB-UI",
+      "artifactName": "HB-UI-${version}.${ext}",
+      "uninstallDisplayName": "NB"
+    },
+    "directories": {
+      "output": "./dist/"
+    }
   }
 }
