@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "outDir": "./dist",
     "allowJs": true,
@@ -20,12 +20,10 @@
       "@/*": ["./src/*"]
     },
     "incremental": true,
+    "downlevelIteration": true
   },
   "include": [
     "**/*.js",
-    "*.js",
-    "src/*.js",
-    "env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".eslintrc.js"
